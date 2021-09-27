@@ -1,27 +1,27 @@
 # vue-admin-template (后台管理系统模版)
 
-<p align="center">
-  <a href="https://github.com/vuejs/vue">
-    <img src="https://img.shields.io/badge/vue-2.6.11-brightgreen.svg" alt="vue">
-  </a>
-  <a href="https://github.com/ElemeFE/element">
-    <img src="https://img.shields.io/badge/element--ui-2.15.6-brightgreen.svg" alt="element-ui">
-  </a>
-  <a href="https://axios-http.com/">
-    <img src="https://img.shields.io/badge/axios-0.21.4-brightgreen.svg" alt="axios">
-  </a>
-  <a href="https://necolas.github.io/normalize.css">
-    <img src="https://img.shields.io/badge/normalize.css-8.0.1-brightgreen.svg" alt="normalize">
-  </a>
-  <a href="https://github.com/fuyi501/vue-element-admin/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
-  </a>
-</p>
+<a href="https://github.com/vuejs/vue">
+  <img src="https://img.shields.io/badge/vue-2.6.11-brightgreen.svg" alt="vue">
+</a>
+<a href="https://github.com/ElemeFE/element">
+  <img src="https://img.shields.io/badge/element--ui-2.15.6-brightgreen.svg" alt="element-ui">
+</a>
+<a href="https://axios-http.com/">
+  <img src="https://img.shields.io/badge/axios-0.21.4-brightgreen.svg" alt="axios">
+</a>
+<a href="https://necolas.github.io/normalize.css">
+  <img src="https://img.shields.io/badge/normalize.css-8.0.1-brightgreen.svg" alt="normalize">
+</a>
+<a href="https://github.com/fuyi501/vue-element-admin/blob/master/LICENSE">
+  <img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="license">
+</a>
 
 基于 [PanJiaChen/vue-admin-template](https://github.com/PanJiaChen/vue-admin-template) 项目重新整理的精简模版，删减和整理了一些内容，通过学习使得对原项目有了更深刻的理解，便于以后自己开发使用。
 
-- [在线预览](https://fuyi501.github.io/vue-admin-template)
-
+- [github 仓库](https://github.com/fuyi501/vue-admin-template)
+- [gitee 仓库](https://gitee.com/fuwenwei501/vue-admin-template.git)
+- [github 在线预览](https://fuyi501.github.io/vue-admin-template)
+- [gitee 在线预览]()
 ## 安装
 
 ```sh
