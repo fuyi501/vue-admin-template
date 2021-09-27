@@ -116,7 +116,7 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
+        path: 'https://github.com/fuyi501/vue-admin-template.git',
         meta: { title: 'github 外链', icon: 'link' }
       }
     ]
@@ -127,7 +127,7 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
+        path: 'https://gitee.com/fuwenwei501/vue-admin-template',
         meta: { title: 'gitee 外链', icon: 'link' }
       }
     ]
