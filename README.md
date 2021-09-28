@@ -43,13 +43,92 @@ npm run build
 
 ## 效果展示
 
-<img src="https://alioss.fuwenwei.com/img/20210927234223.png" alt="vue-admin-template" style="zoom:50%;" />
+![](https://alioss.fuwenwei.com/img/20210927234223.png)
+
+## 部署
+
+### GitHub Pages
+GitHub Pages 部署请看：https://cli.vuejs.org/zh/guide/deployment.html#github-pages
+
+### Docker (Nginx)
+
+1、安装 [Docker](https://www.docker.com/get-started)
+
+2、编译项目文件
+
+```sh
+npm run build
+```
+
+3、使用 nginx 镜像构建 vue 应用镜像
+
+```sh
+docker pull nginx
+```
+
+4、创建 nginx 配置文件
+
+在项目根目录下创建 `nginx` 文件夹，该文件夹下新建文件 `default.conf`
+
+```sh
+server {
+    listen       80;
+    server_name  localhost;
+
+    #charset koi8-r;
+    access_log  /var/log/nginx/host.access.log  main;
+    error_log  /var/log/nginx/error.log  error;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+
+    #error_page  404              /404.html;
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+}
+
+```
+
+该配置文件定义了首页的指向为 `/usr/share/nginx/html/index.html`, 所以我们可以一会把构建出来的 index.html 文件和相关的静态资源放到 `/usr/share/nginx/html` 目录下。
+
+5、创建 Dockerfile 文件
+
+```dockerfile
+FROM nginx
+COPY dist/ /usr/share/nginx/html/
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+```
+
+6、基于该 Dockerfile 构建 vue 应用镜像
+
+```sh
+# 注意不要少了最后的 “.”
+# -t 是给镜像命名 . 是基于当前目录的 Dockerfile 来构建镜像
+docker build -t vue-project-name .
+```
+
+7、运行 vue 应用镜像
+
+```sh
+docker run -d -p 9528:80 --name=vue-project-name vue-project-name
+```
+
+8、访问 vue 应用
+
+打开浏览器，访问项目地址就可以了
 
 ## 相关信息
 
-- 本项目是基于 [PanJiaChen/vue-admin-template](https://github.com/PanJiaChen/vue-admin-template) 重新整理的，它是一个极简的 vue admin 管理后台。
+> 本项目是基于 [PanJiaChen/vue-admin-template](https://github.com/PanJiaChen/vue-admin-template) 重新整理的，它是一个极简的 vue admin 管理后台。
 
-- [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin) 是 [PanJiaChen/vue-admin-template](https://github.com/PanJiaChen/vue-admin-template) 的完整版项目，是一个后台前端解决方案，内置了 i18n 国际化解决方案，动态路由，权限验证，提炼了典型的业务模型，提供了丰富的功能组件，可以帮助你快速搭建企业级中后台产品原型。
+> [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin) 是 [PanJiaChen/vue-admin-template](https://github.com/PanJiaChen/vue-admin-template) 的完整版项目，是一个后台前端解决方案，内置了 i18n 国际化解决方案，动态路由，权限验证，提炼了典型的业务模型，提供了丰富的功能组件，可以帮助你快速搭建企业级中后台产品原型。
 
 原作者 [花裤衩](https://github.com/PanJiaChen) 配套了系列教程文章，如何从零构建后一个完整的后台项目，可以先看完这些文章再来实践本项目。
 
@@ -62,7 +141,6 @@ npm run build
 - [手摸手，带你优雅的使用 icon](https://juejin.im/post/59bb864b5188257e7a427c09)
 - [手摸手，带你用合理的姿势使用 webpack4（上）](https://juejin.im/post/5b56909a518825195f499806)
 - [手摸手，带你用合理的姿势使用 webpack4（下）](https://juejin.im/post/5b5d6d6f6fb9a04fea58aabc)
-
 ## 浏览器支持
 
 Modern browsers and Internet Explorer 10+.
