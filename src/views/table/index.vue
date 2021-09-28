@@ -1,79 +1,46 @@
 <template>
   <div class="app-container">
-    <el-table
-      v-loading="listLoading"
-      :data="list"
-      element-loading-text="Loading"
-      border
-      fit
-      highlight-current-row
-    >
-      <el-table-column align="center" label="ID" width="95">
-        <template slot-scope="scope">
-          {{ scope.$index }}
-        </template>
-      </el-table-column>
-      <el-table-column label="Title">
-        <template slot-scope="scope">
-          {{ scope.row.title }}
-        </template>
-      </el-table-column>
-      <el-table-column label="Author" width="110" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.author }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="Pageviews" width="110" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.pageviews }}
-        </template>
-      </el-table-column>
-      <el-table-column class-name="status-col" label="Status" width="110" align="center">
-        <template slot-scope="scope">
-          <el-tag :type="scope.row.status | statusFilter">{{ scope.row.status }}</el-tag>
-        </template>
-      </el-table-column>
-      <el-table-column align="center" prop="created_at" label="Display_time" width="200">
-        <template slot-scope="scope">
-          <i class="el-icon-time" />
-          <span>{{ scope.row.display_time }}</span>
-        </template>
-      </el-table-column>
-    </el-table>
+    <div>d2-crud-plus 表格测试</div>
+    <el-divider />
+    <div style="height:92%;">
+      <d2-crud-x
+        ref="d2Crud"
+        v-bind="_crudProps"
+        v-on="_crudListeners"
+      >
+        <div slot="header">
+          <crud-search ref="search" :options="crud.searchOptions" @submit="handleSearch" />
+          <el-button-group>
+            <el-button size="small" type="primary" @click="addRow"><i class="el-icon-plus" /> 新增 </el-button>
+          </el-button-group>
+          <crud-toolbar v-bind="_crudToolbarProps" v-on="_crudToolbarListeners" />
+        </div>
+      </d2-crud-x>
+    </div>
   </div>
 </template>
 
 <script>
-import { getList } from '@/api/test'
+import { crudOptions } from './crud' // 上文的 crudOptions配置
+import { d2CrudPlus } from 'd2-crud-plus'
+import { AddObj, GetList, UpdateObj, DelObj } from './api' // 查询添加修改删除的http请求接口
 
 export default {
-  filters: {
-    statusFilter(status) {
-      const statusMap = {
-        published: 'success',
-        draft: 'gray',
-        deleted: 'danger'
-      }
-      return statusMap[status]
-    }
-  },
-  data() {
-    return {
-      list: null,
-      listLoading: true
-    }
-  },
-  created() {
-    this.fetchData()
-  },
+  name: 'Table',
+  mixins: [d2CrudPlus.crud], // 最核心部分，继承d2CrudPlus.crud
   methods: {
-    fetchData() {
-      this.listLoading = true
-      getList().then(response => {
-        this.list = response.data.items
-        this.listLoading = false
-      })
-    }
+    getCrudOptions() { return crudOptions(this) },
+    pageRequest(query) { return GetList(query) }, // 数据请求
+    addRequest(row) { return AddObj(row) }, // 添加请求
+    updateRequest(row) { return UpdateObj(row) }, // 修改请求
+    delRequest(row) { return DelObj(row.id) } // 删除请求
   }
 }
 </script>
+
+<style scoped>
+.app-container {
+  height: 90vh;
+  padding: 24px 20px 20px;
+}
+</style>

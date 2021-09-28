@@ -44,7 +44,7 @@ export const constantRoutes = [
         path: 'table',
         name: 'Table',
         component: () => import('@/views/table/index'),
-        meta: { title: '表格', icon: 'table' }
+        meta: { title: 'd2-crud-plus', icon: 'table' }
       },
       {
         path: 'form',
@@ -60,7 +60,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/nested/menu1',
     name: 'Nested',
-    meta: { title: '嵌套', icon: 'nested' },
+    meta: { title: '嵌套菜单', icon: 'nested' },
     children: [
       {
         path: 'menu1',

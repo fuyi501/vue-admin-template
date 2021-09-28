@@ -6,6 +6,9 @@
 <a href="https://github.com/ElemeFE/element">
   <img src="https://img.shields.io/badge/element--ui-2.15.6-brightgreen.svg" alt="element-ui">
 </a>
+<a href="https://github.com/greper/d2-crud-plus">
+  <img src="https://img.shields.io/badge/d2--crud--plus-2.17.7-brightgreen.svg" alt="d2-crud-plus">
+</a>
 <a href="https://axios-http.com/">
   <img src="https://img.shields.io/badge/axios-0.21.4-brightgreen.svg" alt="axios">
 </a>
@@ -18,10 +21,20 @@
 
 基于 [PanJiaChen/vue-admin-template](https://github.com/PanJiaChen/vue-admin-template) 项目重新整理的精简模版，删减和整理了一些内容，通过学习使得对原项目有了更深刻的理解，便于以后自己开发使用。
 
+在 [PanJiaChen/vue-admin-template](https://github.com/PanJiaChen/vue-admin-template) 的基础上使用了 [d2-crud-plus](https://github.com/greper/d2-crud-plus) 的 crud 处理框架，可以根据 crud 配置快速开发 crud 功能。
+
 - [github 仓库](https://github.com/fuyi501/vue-admin-template)
 - [gitee 仓库](https://gitee.com/fuwenwei501/vue-admin-template.git)
 - [github 在线预览](https://fuyi501.github.io/vue-admin-template)
-- [gitee 在线预览]()
+- [gitee 在线预览](https://fuwenwei501.gitee.io/vue-admin-template)
+
+## 功能
+
+```
+- vue-admin 后台模版
+- d2-crud-plus 快速 crud
+```
+
 ## 安装
 
 ```sh
@@ -45,10 +58,18 @@ npm run build
 
 ![](https://alioss.fuwenwei.com/img/20210927234223.png)
 
+![](https://alioss.fuwenwei.com/img/20210928172823.png)
 ## 部署
 
 ### GitHub Pages
+
 GitHub Pages 部署请看：https://cli.vuejs.org/zh/guide/deployment.html#github-pages
+
+运行 `deploy.sh` 脚本即可：
+
+```sh
+sh deploy.sh
+```
 
 ### Docker (Nginx)
 
@@ -128,7 +149,13 @@ docker run -d -p 9528:80 --name=vue-project-name vue-project-name
 
 > 本项目是基于 [PanJiaChen/vue-admin-template](https://github.com/PanJiaChen/vue-admin-template) 重新整理的，它是一个极简的 vue admin 管理后台。
 
+### vue-element-admin
+
 > [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin) 是 [PanJiaChen/vue-admin-template](https://github.com/PanJiaChen/vue-admin-template) 的完整版项目，是一个后台前端解决方案，内置了 i18n 国际化解决方案，动态路由，权限验证，提炼了典型的业务模型，提供了丰富的功能组件，可以帮助你快速搭建企业级中后台产品原型。
+
+- 帮助文档：https://panjiachen.github.io/vue-element-admin-site/zh/guide/
+- 仓库：https://github.com/PanJiaChen/vue-element-admin
+- 预览：https://panjiachen.gitee.io/vue-element-admin/#/dashboard
 
 原作者 [花裤衩](https://github.com/PanJiaChen) 配套了系列教程文章，如何从零构建后一个完整的后台项目，可以先看完这些文章再来实践本项目。
 
@@ -141,6 +168,15 @@ docker run -d -p 9528:80 --name=vue-project-name vue-project-name
 - [手摸手，带你优雅的使用 icon](https://juejin.im/post/59bb864b5188257e7a427c09)
 - [手摸手，带你用合理的姿势使用 webpack4（上）](https://juejin.im/post/5b56909a518825195f499806)
 - [手摸手，带你用合理的姿势使用 webpack4（下）](https://juejin.im/post/5b5d6d6f6fb9a04fea58aabc)
+
+### d2-crud-plus
+
+> d2-crud-plus 是基于 d2-admin 的 d2-crud 的扩展,旨在简化 d2-crud 配置，快速开发crud功能。
+
+- 帮助文档：http://d2-crud-plus.docmirror.cn/d2-crud-plus/guide/
+- 仓库：https://gitee.com/greper/d2-crud-plus
+- 预览：http://preview.d2-crud-plus.docmirror.cn/D2CrudPlusExample/index.html
+
 ## 浏览器支持
 
 Modern browsers and Internet Explorer 10+.
